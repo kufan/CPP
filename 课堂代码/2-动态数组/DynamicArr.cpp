@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <iostream>
 
 #include "DynamicArr.h"
 
@@ -139,4 +140,80 @@ int DeleteByVal(DynamicArr* arr, int val) {
 		DeleteByPos_Arr(arr, pos);
 		return 0;
 	}
+}
+
+// 获得指定位置的元素
+int At_Arr(DynamicArr* arr, int pos) {
+	if (NULL == arr) {
+		return -1;
+	}
+	if (pos < 0 || pos > arr->size) {
+		return -2;
+	}
+
+	return arr->pAddr[pos];
+}
+
+// 遍历数组
+int Print_Arr(DynamicArr* arr) {
+	if (NULL == arr) {
+		return -1;
+	}
+
+	for (int i = 0; i < arr->size; i++) {
+		// :: 域运算符
+		std::cout << arr->pAddr[i] << " ";
+	}
+	std::cout << std::endl;
+
+	return 0;
+}
+
+// 数组的容量
+int GetCapacity_Arr(DynamicArr* arr) {
+	if (NULL == arr) {
+		return -1;
+	}
+
+	return arr->capacity;
+}
+
+// 数组中元素个数
+int GetSize_Arr(DynamicArr* arr) {
+	if (NULL == arr) {
+		return -1;
+	}
+
+	return arr->size;	
+}
+
+// 清空
+int Clear_Arr(DynamicArr* arr) {
+	if (NULL == arr) {
+		return -1;
+	}
+
+	memset(arr->pAddr, 0, sizeof(int)*arr->capacity);
+	arr->size = 0;
+
+	return 0;
+}
+
+// 销毁
+int Destroy_Arr(DynamicArr* arr) {
+	if (NULL == arr) {
+		return -1;
+	}
+
+	if (arr->pAddr != NULL) {
+		free(arr->pAddr);
+		arr->pAddr = NULL;
+	}
+
+	if (arr != NULL) {
+		free(arr);
+		arr = NULL;
+	}
+
+	return 0;
 }

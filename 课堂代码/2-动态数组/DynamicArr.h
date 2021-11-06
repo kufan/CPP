@@ -29,3 +29,21 @@ int Find_Arr(DynamicArr* arr, int val);
 
 // 删除指定值的元素
 int DeleteByVal(DynamicArr* arr, int val);
+
+// 获得指定位置的元素
+int At_Arr(DynamicArr* arr, int pos);
+
+// 遍历数组
+int Print_Arr(DynamicArr* arr);
+
+// 数组的容量
+int GetCapacity_Arr(DynamicArr* arr);
+
+// 数组中元素个数
+int GetSize_Arr(DynamicArr* arr);
+
+// 清空
+int Clear_Arr(DynamicArr* arr);
+
+// 销毁
+int Destroy_Arr(DynamicArr* arr);
